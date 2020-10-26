@@ -19,6 +19,8 @@ import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import {AlertComponent} from './shared/alert/alert.component';
+import {PlaceholderDirective} from './shared/placeholder/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     AuthComponent,
     RecipeStartComponent,
     RecipeEditComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,11 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
       useClass: AuthInterceptorService,
       multi: true
     }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    // create component dynamically
+    AlertComponent
+  ]
 })
 export class AppModule {
 }
